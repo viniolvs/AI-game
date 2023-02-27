@@ -71,8 +71,13 @@ def update_screen(settings, screen, map, player, enemies, bullets, round, my_fon
     # redesenha tela a cada pasagem pelo laço
     screen.fill([255, 255, 255])
     map.blitme()
+    player_life_text = my_font.render(
+        "Life: " + str(player.health), False, (255, 255, 255)
+    )
     round_text = my_font.render("Round: " + str(round), False, (255, 255, 255))
     screen.blit(round_text, (0, 0))
+    # exibe no canto superior direito
+    screen.blit(player_life_text, ((screen.get_rect().right - 300), 0))
 
     # redesenha os projeteis
     for bullet in bullets.sprites():
