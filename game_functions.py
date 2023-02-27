@@ -99,7 +99,7 @@ def update_bullets(bullets, enemies, settings, screen):
 
     if collision != {}:
         for key, enemy in collision.items():
-            enemy[0].health -= 1
+            enemy[0].health -= settings.bullet_damage
 
     bullets.update()
 

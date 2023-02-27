@@ -3,7 +3,6 @@ class Settings:
     def __init__(self, screen):
         # Mapa
         self.map_size = (1920, 1080)
-        screen_rect = screen.get_rect()
         self.left_tp_position = (80, 570)
         self.right_tp_position = (1850, 540)
 
