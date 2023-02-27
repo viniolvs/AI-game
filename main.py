@@ -1,4 +1,5 @@
 import pygame
+from enemy import Enemy
 from settings import Settings
 from map import Map
 from player import Player

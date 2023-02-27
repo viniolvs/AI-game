@@ -57,9 +57,9 @@ class Enemy(Sprite):
     def set_state(self):
         if self.health <= 0:
             self.kill()
-        # cura quando a vida está em 10%
+        # cura quando a vida está em 20%
         elif self.health <= self.settings.enemy_low_health:
-            self.heal()
+            self.low()
         # ataca quando está próximo do player
         elif self.rect.colliderect(self.player.rect):
             self.attack()
@@ -98,17 +98,13 @@ class Enemy(Sprite):
             print("attacked")
         self.last_state = "attack"
 
-    def heal(self):
+    def low(self):
+        print("low")
         # inimigo foge do player
-        if self.last_state != "heal":
+        if self.last_state != "low":
             self.restart_move()
         self.a_star_move(True)
-        # cura o inimigo a cada 5 seg
-        last_heal = pygame.time.get_ticks()
-        if (pygame.time.get_ticks() - last_heal) > self.settings.enemy_heal_rate:
-            self.health += 1
-            last_heal = pygame.time.get_ticks()
-        self.last_state = "heal"
+        self.last_state = "low"
 
     def restart_move(self):
         self.best_move = []
