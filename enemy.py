@@ -57,15 +57,15 @@ class Enemy(Sprite):
     def set_state(self):
         if self.health <= 0:
             self.kill()
-        # cura quando a vida está em 20%
-        elif self.health <= self.settings.enemy_low_health:
-            self.low()
         # ataca quando está próximo do player
         elif self.rect.colliderect(self.player.rect):
             self.attack()
         # caça quando a vida do player está em 20%
         elif self.player.health <= self.settings.player_low_health:
             self.hunt()
+        # cura quando a vida está em 20%
+        elif self.health <= self.settings.enemy_low_health:
+            self.low()
         # caça quando está à uma distancia de 20% do player
         elif self.hunt_distance():
             self.hunt()
