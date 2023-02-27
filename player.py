@@ -70,13 +70,11 @@ class Player(object):
         self.screen.blit(self.image, self.rect)
 
     def check_teleport(self, time):
-        # teleporta a cada 3 seg
-        if time - self.last_teleport > 3000:
-            if self.rect.center == self.settings.left_tp_position:
-                self.last_teleport = time
-                self.centerx = self.settings.right_tp_position[0]
-                self.centery = self.settings.right_tp_position[1]
-            elif self.rect.center == self.settings.right_tp_position:
-                self.last_teleport = time
-                self.centerx = self.settings.left_tp_position[0]
-                self.centery = self.settings.left_tp_position[1]
+        if self.rect.center == self.settings.left_tp_position:
+            self.last_teleport = time
+            self.centerx = self.settings.right_tp_position[0]
+            self.centery = self.settings.right_tp_position[1]
+        elif self.rect.center == self.settings.right_tp_position:
+            self.last_teleport = time
+            self.centerx = self.settings.left_tp_position[0]
+            self.centery = self.settings.left_tp_position[1]
