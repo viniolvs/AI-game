@@ -106,6 +106,11 @@ class Enemy(Sprite):
         self.a_star_move(True)
         self.last_state = "low"
 
+    def is_moving(self):
+        if self.moving_right or self.moving_left or self.moving_up or self.moving_down:
+            return True
+        return False
+
     def restart_move(self):
         self.best_move = []
         self.moving_right = False
@@ -158,7 +163,7 @@ class Enemy(Sprite):
 
     def get_possible_moves(self):
         possible_moves = []
-        margin = 30
+        margin = 50
         if check_wall(self, self.settings, self.screen, "right", margin):
             possible_moves.append(
                 [self.rect.centerx + margin, self.rect.centery, "right"]
@@ -213,4 +218,4 @@ class Enemy(Sprite):
                     self.moving_up = True
                 elif self.best_move[2] == "down":
                     self.moving_down = True
-            self.move(0)
+                self.move(0)
