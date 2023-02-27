@@ -1,5 +1,5 @@
 import pygame
-import game_functions as gf
+from math import sqrt
 from collision import check_wall
 
 
@@ -70,11 +70,23 @@ class Player(object):
         self.screen.blit(self.image, self.rect)
 
     def check_teleport(self, time):
-        if self.rect.center == self.settings.left_tp_position:
-            self.last_teleport = time
-            self.centerx = self.settings.right_tp_position[0]
-            self.centery = self.settings.right_tp_position[1]
-        elif self.rect.center == self.settings.right_tp_position:
-            self.last_teleport = time
-            self.centerx = self.settings.left_tp_position[0]
-            self.centery = self.settings.left_tp_position[1]
+        """Verifica se o jogador esta na posicao de teleport"""
+        if time - self.last_teleport > 500:
+            if self.rect.center[0] == self.settings.left_tp_position[0]:
+                if (
+                    sqrt((self.rect.center[1] - self.settings.left_tp_position[1]) ** 2)
+                    <= 10
+                ):
+                    self.last_teleport = time
+                    self.centerx = self.settings.right_tp_position[0]
+                    self.centery = self.settings.right_tp_position[1]
+            elif self.rect.center[0] == self.settings.right_tp_position[0]:
+                if (
+                    sqrt(
+                        (self.rect.center[1] - self.settings.right_tp_position[1]) ** 2
+                    )
+                    <= 10
+                ):
+                    self.last_teleport = time
+                    self.centerx = self.settings.left_tp_position[0]
+                    self.centery = self.settings.left_tp_position[1]
