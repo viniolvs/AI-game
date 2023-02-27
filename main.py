@@ -21,7 +21,7 @@ def run_game():
 
     my_font = pygame.font.Font("font.ttf", 50)
 
-    round = 3
+    round = 1
     i = 1
     last_spawn = 0
 
