@@ -42,7 +42,7 @@ def check_wall_bullet(bullet, settings, screen, margin=1):
     return False
 
 
-def check_wall(character, settings, screen, side, margin=10):
+def check_wall(character, settings, screen, side, margin=20):
     """Check if a character is touching a wall using background color."""
     centerx = int(character.rect.centerx)
     centery = int(character.rect.centery)

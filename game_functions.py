@@ -7,7 +7,7 @@ from enemy import Enemy
 
 def end_game(screen):
     pygame.font.init()
-    my_font = pygame.font.Font("font.ttf", 100)
+    my_font = pygame.font.Font("fonts/font.ttf", 100)
     text = my_font.render("Game Over", True, (255, 255, 255))
     screen.blit(
         text, (screen.get_rect().centerx - 300, screen.get_rect().centery - 100)

@@ -64,7 +64,7 @@ class Enemy(Sprite):
         elif self.player.health <= self.settings.player_low_health:
             self.hunt()
         # cura quando a vida está em 20%
-        elif self.health <= self.settings.enemy_low_health:
+        elif self.health <= self.settings.enemy_low_health and self.hunt_distance():
             self.low()
         # caça quando está à uma distancia de 20% do player
         elif self.hunt_distance():
@@ -183,7 +183,7 @@ class Enemy(Sprite):
     def get_best_move(self, heal=False):
         possible_moves = self.get_possible_moves()
         player_pos = self.player.rect.center
-        best_move = [possible_moves[0][0], possible_moves[0][1], possible_moves[0][2]]
+        best_move = possible_moves[0]
         best_move_distance = -1
         for move in possible_moves:
             distance = sqrt(

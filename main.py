@@ -19,15 +19,17 @@ def run_game():
     bullets = Group()
     enemies = Group()
 
-    my_font = pygame.font.Font("font.ttf", 50)
+    my_font = pygame.font.Font("fonts/font.ttf", 50)
 
     round = 1
     i = 1
     last_spawn = 0
 
     settings.enemy_health = round
+    settings.enemy_low_health = round * 0.25
     # Inicializa o laço principal do jogo
     gf.spawn_enemies(settings, screen, round, player, enemies)
+
     while True:
 
         if player.health <= 0:
@@ -40,6 +42,7 @@ def run_game():
         if i > 0 and enemies.sprites() == []:
             round += 1
             settings.enemy_health = round
+            settings.enemy_low_health = round * 0.25
             if round % 2 == 0 and player.fire_rate > 100:
                 player.fire_rate -= 100
             if round % 3 == 0 and settings.player_speed_factor < 20:
@@ -55,7 +58,6 @@ def run_game():
                 settings.bullet_speed_factor += 1
             if player.health < settings.player_health:
                 player.health += 1
-            i = 1
             gf.spawn_enemies(settings, screen, round, player, enemies)
             last_spawn = time
 

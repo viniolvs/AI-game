@@ -53,7 +53,10 @@ class Player(object):
             self.centery += self.settings.player_speed_factor
         self.rect.centerx = self.centerx
         self.rect.centery = self.centery
-        self.check_teleport(pygame.time.get_ticks())
+        if (self.centerx == self.settings.right_tp_position[0]) or (
+            self.centerx == self.settings.left_tp_position[0]
+        ):
+            self.check_teleport(pygame.time.get_ticks())
 
     def blitme(self):
         """Desenha o jogador em sua posicao atual"""

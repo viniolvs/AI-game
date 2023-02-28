@@ -22,8 +22,7 @@ class Settings:
         self.enemy_speed_factor = 5
         self.enemy_size = (50, 50)
         self.enemy_health = 1
-        self.enemy_low_health = self.enemy_health * 0.20
-        self.enemy_heal_rate = 5000  # 5 seg
+        self.enemy_low_health = self.enemy_health * 0.25
         self.enemy_attack_rate = 1000  # 1 seg
         self.enemy_attack_damage = 1
         self.enemy_hunt_distance = 200
