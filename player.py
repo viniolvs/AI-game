@@ -43,20 +43,16 @@ class Player(object):
 
     def update(self):
         """Atualiza a posicao do jogador"""
-        if self.moving_right and check_wall(self, self.settings, self.screen, "right"):
+        if self.moving_right:
             self.centerx += self.settings.player_speed_factor
-        elif self.moving_left and check_wall(self, self.settings, self.screen, "left"):
+        elif self.moving_left:
             self.centerx -= self.settings.player_speed_factor
-        elif self.moving_up and check_wall(self, self.settings, self.screen, "up"):
+        elif self.moving_up:
             self.centery -= self.settings.player_speed_factor
-        elif self.moving_down and check_wall(self, self.settings, self.screen, "down"):
+        elif self.moving_down:
             self.centery += self.settings.player_speed_factor
         self.rect.centerx = self.centerx
         self.rect.centery = self.centery
-        if (self.centerx == self.settings.right_tp_position[0]) or (
-            self.centerx == self.settings.left_tp_position[0]
-        ):
-            self.check_teleport(pygame.time.get_ticks())
 
     def blitme(self):
         """Desenha o jogador em sua posicao atual"""

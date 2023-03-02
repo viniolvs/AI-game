@@ -69,7 +69,6 @@ def check_events(settings, screen, player, bullets):
 def update_screen(settings, screen, map, player, enemies, bullets, round, my_font):
     """Atualiza imagens na tela e alterna para nova tela"""
     # redesenha tela a cada pasagem pelo laço
-    screen.fill([255, 255, 255])
     map.blitme()
     player_life_text = my_font.render(
         "Life: " + str(player.health), False, (255, 255, 255)
